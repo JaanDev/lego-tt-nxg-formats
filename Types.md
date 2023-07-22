@@ -1,11 +1,11 @@
 # Types
 
-`f32` = `float`
-`u8` = `unsigned char`
-`i8` = `char`
-`u16` = `unsigned short`
-`i16` = `short`
-`u32` = `unsigned int`
+`f32` = `float`  
+`u8` = `unsigned char`  
+`i8` = `char`  
+`u16` = `unsigned short`  
+`i16` = `short`  
+`u32` = `unsigned int`  
 `i32` = `int`
 
 `type[n]` = `type`, `n` times

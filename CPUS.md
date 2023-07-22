@@ -1,6 +1,6 @@
 # CPUS
 Endianness: big  
-Reverse engineered by [JaanDev](https://github.com/JaanDev)
+Reverse engineered by [JaanDev](https://github.com/JaanDev)  
 This file may have mistakes (but most likely doesnt) as i was not able to find a file that contains all that info
 
 ## Main
