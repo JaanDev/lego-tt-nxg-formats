@@ -1,6 +1,6 @@
 # HGOL
-Endianness: big
-Reverse engineered by [JaanDev](https://github.com/JaanDev)
+Endianness: big  
+Reverse engineered by [JaanDev](https://github.com/JaanDev)  
 this is probably wrong
 
 ## Main

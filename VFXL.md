@@ -1,5 +1,5 @@
 # VFXL
-Endianness: big
+Endianness: big  
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
