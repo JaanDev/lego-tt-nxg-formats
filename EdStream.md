@@ -1,5 +1,6 @@
 # EdStream
-Endianness: little
+Endianness: little  
+Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
 * `StreamInfo`: `BLOCKINFO`
