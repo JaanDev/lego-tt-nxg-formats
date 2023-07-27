@@ -3,9 +3,9 @@ Endianness: big
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
-* `LOGH`: `str`. 4 character code. Flipped because of endianness
+* `LOGH`: `4CC`
 * `ver`: `u32`
-* `joints`: `JOINTS`
+* `joints`: `JOINTS`. bones?
 * `T`: `T`
 * `INV_WT`: `T`
 * `jointIxs`: `IXS`
@@ -51,7 +51,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
     * `u`: `u32`
     * `orient`: `f32[16]`
     * `locatorOffset`: `f32[3]`
-    * `parentIdx`: `u8`
+    * `parentIdx`: `u8`. Maybe `i8` ?
     * `flags`: `u8`
 
 ## T

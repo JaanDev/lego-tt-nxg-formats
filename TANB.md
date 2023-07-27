@@ -4,7 +4,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 this file may be wrong as i was not able to compare it with the decomp. could not find any such block
 
 ## Main
-* `BNAT`: `str`. 4 char code
+* `BNAT`: `4CC`
 * `ver`: `u32`
 * `animBlocks`:
     * `size`: `u32`

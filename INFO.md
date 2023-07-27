@@ -4,7 +4,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
 * `ver`: `u32`
-* `OFNI`: `str`. 4 character code
+* `OFNI`: `4CC`. 4 character code
 * `unk`: `u32`
 * `author`: `STR32`
 * `date`: `STR32`

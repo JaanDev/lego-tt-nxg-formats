@@ -5,7 +5,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 ## Main
 * `size`: `u32`. Size of the block
 * `unk`: `u32`. It's always (?) 1
-* `TNFN`: `str`. 4 character code
+* `TNFN`: `4CC`
 * `type`: `u32`. 2 for buttons, 3 for fonts
 * `version`: `u32`
 * `flags`: `u16`
@@ -24,7 +24,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## POSTABLE
 * if `type > 2`:
-    * `ROTV`: `str`
+    * `ROTV`: `4CC`
 * `size`: `u32`
 * `size` times:
     * `x`: `f32`. X coordinate of the texture rect
@@ -33,7 +33,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## CHARTABLE
 * if `type > 2`:
-    * `ROTV`: `str`
+    * `ROTV`: `4CC`
 * `size`: `u32`
 * `size` times:
     * `unicodeCodepoint`: `u16`
@@ -42,7 +42,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 ## KERNTABLE
 * if `type > 1`:
     * if `type > 2`:
-        * `ROTV`: `str`
+        * `ROTV`: `4CC`
     * `size`: `u32`
     * `size` times:
         * `charA`: `u16`. Character A

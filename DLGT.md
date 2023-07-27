@@ -3,7 +3,7 @@ Endianness: big
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
-* `TGLD`: `str`. 4 character code. flipped
+* `TGLD`: `4CC`
 * `ver`: `u32`
 * if `ver <= 1`:
     * `lightCount`: `u32`

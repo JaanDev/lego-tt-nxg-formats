@@ -3,7 +3,7 @@ Endianness: big
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
-* `HSER`: `str`. 4 character code
+* `HSER`: `4CC`. 4 character code
 * `ver`: `u32`
 * `unk`: `u32`
 * `version`: `u32`
@@ -31,7 +31,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 * `sourceFileName`: `STR16`
 
 ## RESOURCES
-* `ROTV`: `str`
+* `ROTV`: `4CC`
 * `size`: `u32`
 * `size` times:
     * `t`: `u32`. type?

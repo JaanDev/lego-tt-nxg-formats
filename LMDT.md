@@ -4,7 +4,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 Lightmap data
 
 ## Main
-* `TDML`: `str`. 4 char code
+* `TDML`: `4CC`. 4 char code
 * `ver`: `u32`
 * `size`: `u32`
 * `size` times:

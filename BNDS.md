@@ -3,7 +3,7 @@ Endianness: big
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
-* `SNDB`: `str`. 4 character code
+* `SNDB`: `4CC`
 * `ver`: `u32`
 * `numSpheres`: `u32`
 * `numBounds`: `u32`

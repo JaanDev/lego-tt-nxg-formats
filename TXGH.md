@@ -6,19 +6,19 @@ maybe not done?
 
 ## Main
 * `unknown`: `u32`. It was 1 in all files i've checked
-* `HGXT`: `str`. 4 character code. Flipped because of endianness
+* `HGXT`: `4CC`
 * `version`: `u32`. It is assumed to be `0xA`
 * `tids` (texture ids?): `TIDS`
 * `textures`: `TEXTURES`
 
 ## TIDS
-* `ROTV`: `str`. Block indicator
+* `ROTV`: `4CC`
 * `size`: `u32`
 * `size` times:
     * `data`: `u32`. Unknown as all of them were 0 in all files i've checked
 
 ## TEXTURES
-* `ROTV`: `str`. Block indicator
+* `ROTV`: `4CC`
 * `size`: `u32`
 * `size` times:
     * `unknown`: `u8[16]`

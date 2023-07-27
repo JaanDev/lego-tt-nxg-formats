@@ -4,7 +4,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 This file may have mistakes (but most likely doesnt) as i was not able to find a file that contains all that info
 
 ## Main
-* `SUPC`: `str`. 4 char code
+* `SUPC`: `4CC`
 * `ver`: `u32`
 * if `ver of prev block < 60`:
     * `lodsVersion`: `u32`

@@ -3,7 +3,7 @@ Endianness: big
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
-* `4LVI`: `str`. 4 char code
+* `4LVI`: `4CC`. 4 char code
 * `ver`: `u32`
 * `bounds[0]`: `12 bytes`
 * `bounds[1]`: `12 bytes`
