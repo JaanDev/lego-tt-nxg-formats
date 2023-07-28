@@ -20,3 +20,15 @@
 ## STR32
 * `len`: `u32`
 * `data`: `str(len)`
+
+## ATTRIBS
+* `nbAttribs`: `u32`. Attribs count
+* `nbAttribs` times:
+    * `valType`: `u8`. Type of the value (position, normal etc.)
+    * `valVarType`: `u8`. Type of the value itself (vel4half, vec2mini etc.)
+    * `offset`: `u8`. Offset of this value for each vertex
+
+## COL3F
+* `r`: `f32`
+* `g`: `f32`
+* `b`: `f32`

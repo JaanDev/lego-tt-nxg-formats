@@ -55,12 +55,8 @@ Credits to the original author of [this](https://github.com/JamesFrancoe/TTGames
 * `unk`: `u32`
 * `flags`: `u32`
 * `count`: `u32`
-* `nbAttribs`: `u32`. Attribs count
-* `nbAttribs` times:
-    * `valType`: `u8`. Type of the value (position, normal etc.)
-    * `valVarType`: `u8`. Type of the value itself (vel4half, vec2mini etc.)
-    * `offset`: `u8`. Offset of this value for each vertex
+* `attribs`: `ATTRIBS`
 * Now the size in bytes of each vertex entry is calculated based on the `valVarType`s. The vertex size is equal to `sum([(4 * (type == 6) + 4) if (type > 4) else (4 * type) for type in valVarTypes])`
 * `count` times:
-    * for `val` in `valVarTypes`:
+    * for `val` in `attribs.valVarTypes`:
         * `entry`: `(4 * (val == 6) + 4) if (val > 4) else (4 * val) bytes`
