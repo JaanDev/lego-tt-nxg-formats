@@ -3,7 +3,7 @@ Endianness: big
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
-* `SNDB`: `4CC`
+* `SDNB`: `4CC`
 * `ver`: `u32`
 * `numSpheres`: `u32`
 * `numBounds`: `u32`
@@ -12,6 +12,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 
 ## BOUNDS
+* `ROTV`: `4CC`
 * `size`: `u32`
 * `size` times:
     * `data`: `f32[4]`

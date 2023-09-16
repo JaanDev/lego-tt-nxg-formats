@@ -5,7 +5,7 @@ Credits to the original author of [this](https://github.com/JamesFrancoe/TTGames
 
 ## Main
 * `HSEM`: `4CC`
-* `ver`: `u32`. It is assumed to be `>= 0x30`
+* `ver`: `u32` ; It is assumed to be `>= 0x30`
 * `ROTV`: `4CC`
 * `len`: `u32`
 * `len` times:
@@ -45,7 +45,7 @@ Credits to the original author of [this](https://github.com/JamesFrancoe/TTGames
     * `byteOffset`: `u32`
 
 ## UNK
-* `unk`: `u32`. Maybe size? But this is not used anyway
+* `unk`: `u32` ; Maybe size? But this is not used anyway
 * `flags`: `u32`
 * `count`: `u32`
 * `size`: `u32`

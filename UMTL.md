@@ -132,7 +132,7 @@ This file may (but very unlikely) contain mistakes, just because it's so huge. O
         * `miscFlags.canAlphaBlend`: `u8`
         * `miscFlags.Defunct_Opaque`: `u8`
         * `miscFlags.isDecal`: `u8`
-        * `miscFlags.creaseMeshMaterial`: `u8`. Might be a typo (crease -> create) but im not sure
+        * `miscFlags.creaseMeshMaterial`: `u8` ; Might be a typo (crease -> create) but im not sure
         * if `ver >= 0x20`:
             * `miscFlags.TTAnimationMode`: `u8`
         * if `ver >= 0x2C`:
@@ -147,9 +147,9 @@ This file may (but very unlikely) contain mistakes, just because it's so huge. O
         * `output.normalRT`: `u8`
         * `output.albedoRT`: `u8`
         * `output.depthAsColourRT`: `u8`
-        * Some strange thing here in the code, but it probably does not read: `displayMode`: `u32`
+        * ; Some strange thing here in the code, but it probably does not read: `displayMode`: `u32` (dont remove the `;` at the beginning of this line)
         * `shaderVersion`: `u32`
-        * `GPUVendor`: `u32`. what lol
+        * `GPUVendor`: `u32` ; what lol
         * if `ver < 0x7B`:
             * `srgb`: `u8`
         * else
@@ -177,7 +177,7 @@ This file may (but very unlikely) contain mistakes, just because it's so huge. O
             * `glowMode`: `u32`
         * if `ver >= 0x8C`:
             * `rainSplashSurfaceType`: `u32`
-        * probably doesnt read: `engineHash`: `u32`
+        * ; probably doesnt read: `engineHash`: `u32`
         * if `ver >= 0x6F`:
             * `useTangent2`: `u8`
     * `localTID`: `u32[16]`
@@ -198,7 +198,7 @@ This file may (but very unlikely) contain mistakes, just because it's so huge. O
             * `temp`: `f32`
             * `temp`: `f32`
     * `unk`: `UV_UNK[4]`
-    * `Uint`: `u32[4]`. Yes it's called like that in the code
+    * `Uint`: `u32[4]` ; Yes it's called like that in the code
     * if `ver < 0x31`:
         * `kOpacity`: `f32[4]`
     * `bitangentFlip`: `u8`
@@ -234,7 +234,7 @@ This file may (but very unlikely) contain mistakes, just because it's so huge. O
     * `kCarPaintViewFactor`: `f32`
     * `kCarPaintLightFactor`: `f32`
     * `kBDRFRoughness`: `f32`
-    * `kBDRFAnotherSetting`: `f32`. Yes it's like that in the code =)
+    * `kBDRFAnotherSetting`: `f32` ; Yes it's like that in the code =)
     * `kDappleDistance`: `f32`
     * if `ver >= 0x17`:
         * `kDappleIntensity`: `f32`
@@ -269,7 +269,7 @@ This file may (but very unlikely) contain mistakes, just because it's so huge. O
         * if `ver >= 0x3C && ver != 0x64 & ver != 0x65 && ver != 0x66`:
             * `materialName`: `STR16`
         * else
-            * `materialName`: `STR32`. <i>Should</i> be the material name
+            * `materialName`: `STR32` ; <i>Should</i> be the material name
     * if `ver >= 0x18`:
         * `flags`: `u32`
     * if `ver >= 0x81`:

@@ -5,7 +5,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 ## Main
 * `LOGH`: `4CC`
 * `ver`: `u32`
-* `joints`: `JOINTS`. bones?
+* `joints`: `JOINTS` ; bones?
 * `T`: `T`
 * `INV_WT`: `T`
 * `jointIxs`: `IXS`
@@ -51,7 +51,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
     * `u`: `u32`
     * `orient`: `f32[16]`
     * `locatorOffset`: `f32[3]`
-    * `parentIdx`: `u8`. Maybe `i8` ?
+    * `parentIdx`: `u8` ; Maybe `i8` ?
     * `flags`: `u8`
 
 ## T
@@ -104,7 +104,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
         * `size`: `u32`
         * `size` times:
             * `centre`: `f32[3]`
-            * `x_axis`: `u32[4]`. Not sure about these but im unable to check. It may be `f32`
+            * `x_axis`: `u32[4]` ; Not sure about these but im unable to check. It may be `f32`
             * `y_axis`: `f32[3]`
             * `z_axis`: `u32[4]`
     * `shadowMeshes`:
@@ -113,9 +113,9 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
             * `normals`:
                 * `size`: `u32`
                 * `size` times:
-                    * `val`: `u32[4]`. May be `f32`
+                    * `val`: `u32[4]` ; May be `f32`
             * `verts`:
                 * `size`: `u32`
                 * `size` times:
-                    * `val`: `u32[4]`. May be `f32`
+                    * `val`: `u32[4]` ; May be `f32`
     * `joint`: `u8`

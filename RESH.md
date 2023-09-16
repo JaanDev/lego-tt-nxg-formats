@@ -1,9 +1,10 @@
 # RESH
 Endianness: big  
+Skip -4  
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
-* `HSER`: `4CC`. 4 character code
+* `HSER`: `4CC`
 * `ver`: `u32`
 * `unk`: `u32`
 * `version`: `u32`
@@ -34,7 +35,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 * `ROTV`: `4CC`
 * `size`: `u32`
 * `size` times:
-    * `t`: `u32`. type?
+    * `t`: `u32` ; type?
     * `param`: `u32`
     * `hash`: `u32`
     * `unk`: `u32`

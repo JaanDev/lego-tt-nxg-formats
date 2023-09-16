@@ -4,13 +4,13 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
 * `StreamInfo`: `BLOCKINFO`
-* `ver`: `u32`. probably version but im not sure as there are no names for this format. it is assumed to be > 22
+* `ver`: `u32` ; probably version but im not sure as there are no names for this format. it is assumed to be > 22
 * `TypeList`: `BLOCKINFO`
 * `len`: `u32`
 * `len` times:
     * `Type`: `BLOCKINFO`
     * `name`: `STR32`
-    * `size`: `u32`. Size of the type in bytes. (or `i32`?)
+    * `size`: `u32` ; Size of the type in bytes. (or `i32`?)
 * `ClassList`: `BLOCKINFO`
 * `len`: `u32`
 * `len` times:
@@ -24,7 +24,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
         * elif `propertyName == "Types"`:
             * `size`: `u32`
             * `size` times:
-                * `index`: `u32`. index of the type from TypeList
+                * `index`: `u32` ; index of the type from TypeList
                 * `typeName`: `STR32`
                 * `unk1`: `u32`
                 * `unk2`: `u32`
@@ -36,7 +36,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
             * `len`: `u32`
             * `len` times:
                 * `Component`: `BLOCKINFO`
-                * `name`: `STR32`. Of max len 128
+                * `name`: `STR32` ; Of max len 128
                 * `unk`: `u32`
 * `count`: `u32`
 * `count` times:
@@ -52,9 +52,9 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
             * `unk`: `u32`
         * else
             * `unk`: `u16`
-        * `unk`: `u8`. skip 1 byte for some reason
+        * `unk`: `u8` ; skip 1 byte for some reason
         * todo
 
 ## BLOCKINFO
-* `size`: `u32`. Size of the block (including this value)
+* `size`: `u32` ; Size of the block (including this value)
 * `name`: `STR32`

@@ -18,12 +18,12 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 * `common`: `LIGHT_COMMON`
 * `deferredBoundingBoxes`:
     * `usedBits`: `u8`
-    * `num` = `4u32` if `ver >= 0x17` else `6u32`
-    * `i` = `0u32`
-    * `num` times:
-        * this one is tricky. it only reads if `((*(&usedBits + (i >> 3)) >> (i & 7)) & 1) != 0`. so it doesnt read in most cases, for example when `usedBits = 0`
-        * `data`: `DEFER_BB`
-        * `i` = `i + 1`
+    * ; `num` = `4u32` if `ver >= 0x17` else `6u32`
+    * ; `i` = `0u32`
+    * ; `num` times:
+        * ; this one is tricky. it only reads if `((*(&usedBits + (i >> 3)) >> (i & 7)) & 1) != 0`. so it doesnt read in most cases, for example when `usedBits = 0`
+        * ; `data`: `DEFER_BB`
+        * ; `i` = `i + 1`
 * `numRayTracedShadowRays`: `u32`
 * `realTimeMethod`: `u32`
 * if `ver < 0x23`:
@@ -107,7 +107,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
     * `name`: `STR16`
 * else:
     * `name`: `STR32`
-* `enabled`: `u8` (`bool`)
+* `enabled`: `u8`
 * if `ver >= 0x16`:
     * `layer`: `u32`
 * `shapeType`: `u32`
@@ -121,18 +121,18 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 * `bouncedDiffuseMode`: `u32`
 * `specularMode`: `u32`
 * if `ver >= 0x22`:
-    * `godRays`: `u32`. (or `f32` ?)
+    * `godRays`: `u32` ; (or `f32` ?)
     * `effectIntensity`: `f32`
 * if `ver >= 0x24`:
     * `godRaysFalloff`: `f32`
 * if `ver >= 0x29`:
-    * `lensFlare`: `u8` (`bool`)
+    * `lensFlare`: `u8`
 * if `ver >= 0x12`:
     * if `ver >= 0x15`:
         * if `ver < 0x1E`:
             * `serializeMtx`: `64 bytes`
     * else
-        * `x`: `12 bytes`. I really dont know why but it reads 12 bytes in the code
+        * `x`: `12 bytes` ; I really dont know why but it reads 12 bytes in the code
         * `y`: `12 bytes`
         * `z`: `12 bytes`
         * `w`: `12 bytes`
