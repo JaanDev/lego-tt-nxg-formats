@@ -384,38 +384,19 @@ class Reader():
 
 
 if __name__ == '__main__':
-    # if len(sys.argv) < 3:
-    #     print("Usage: python reader.py <path to script> <files...>")
-    #     sys.exit(1)
-
-    # script = Path(sys.argv[1])
-    # files = sys.argv[2:]
-
-    # print(f'Using script {script}')
-
-    # r = Reader(script)
-
-    # for file in files:
-    #     out = f'{file}_{script.stem}.txt'
-    #     print(f'Processing {file} -> {out}')
-    #     r.process(file, out)
-
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--scripts', nargs='+',
                         help='Specify script .md file(s). Supports glob expressions.')
     parser.add_argument('-i', '--input', nargs='+',
                         help='Specify input file(s). Supports glob expressions.')
     args = parser.parse_args()
-    print(args)
 
-    exclusions = ['MESH', 'TANB']  # scripts it cant read
+    exclusions = ['MESH', 'TANB', 'IVL4']  # scripts it cant read
 
     # only use 4 letter named scripts to avoid confusion
     scripts = [x for x in list(itertools.chain(
         *[glob(x) for x in args.scripts])) if len(Path(x).stem) == 4 and not Path(x).stem in exclusions]
     inputs = list(itertools.chain(*[glob(x) for x in args.input]))
-    print(scripts)
-    print(inputs)
 
     for s in scripts:
         print(f'Using script {s}')

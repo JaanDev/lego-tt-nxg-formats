@@ -17,10 +17,10 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 * `treeNodes`:
     * `size`: `u32`
     * `size` times:
-        * `sampleIndex`: `u16[8]`. (`NuLSVNode`)
+        * `sampleIndex`: `u16[8]` ; (`NuLSVNode`)
 * `lights`: `DLGT` ; (if `ver == 2`, there is no `DLGT` version or 4 char code)
 * if `ver >= 4`:
-    * `nextGen`: `u8`. (`bool`)
+    * `nextGen`: `u8` ; (`bool`)
 * if `ver >= 5`:
     * `compactSampleArray`:
         * `size`: `u32`
