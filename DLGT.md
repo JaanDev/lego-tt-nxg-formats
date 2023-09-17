@@ -165,7 +165,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 * if `ver >= 0x13`:
     * `lightFalloffStart`: `f32`
     * `lightFalloffRange`: `f32`
-* `TID`: `u32`. (`i32` ?)
+* `TID`: `u32` ; (`i32` ?)
 * `spotFovY_Degrees`: `f32`
 * `spotFovY_Cos`: `f32`
 * `spotInnerFovY_Degrees`: `f32`

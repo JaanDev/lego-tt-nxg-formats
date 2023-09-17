@@ -6,10 +6,11 @@ This file may have mistakes (but most likely doesnt) as i was not able to find a
 ## Main
 * `SUPC`: `4CC`
 * `ver`: `u32`
-* if `ver of prev block < 60`:
-    * `lodsVersion`: `u32`
-* else:
-    * `lodsVersion` = `1u32`
+* ;if `ver of prev block < 60`:
+    * ;`lodsVersion`: `u32`
+* ;else:
+    * ;`lodsVersion` = `1u32`
+* `lodsVersion`: `u32`
 * `lods`:
     * `size`: `u32`
     * `size` times:

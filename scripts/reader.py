@@ -1,6 +1,8 @@
-import sys
 from pathlib import Path
 import re
+import argparse
+from glob import glob
+import itertools
 
 import bin_utils
 
@@ -37,7 +39,7 @@ class Scope():
 
     def get(self, name, depth):
         self.check_depth(depth)
-        
+
         if depth < len(self.scope):
             d = depth
             while d >= 0:
@@ -65,6 +67,9 @@ class Reader():
         self.scope = Scope()
         self.base_depth = 0
 
+    def write_addr(self):
+        print(f'[{self.r.pos:08X}] ', end='', file=self.f)
+
     def write_line(self, line):
         self.f.write('    ' * (self.depth + self.base_depth) +
                      '- ' + line + '\n')
@@ -76,6 +81,7 @@ class Reader():
             raise ValueError("The file should start with the '# SCRIPTNAME'")
 
         script_name = line[2:]
+        print('[00000000] ', end='', file=self.f)
         self.write_line(f'Script: {script_name}')
 
         # endianness
@@ -84,6 +90,7 @@ class Reader():
             raise ValueError("The 2nd line should contain the endianness")
 
         self.endianness = line.strip().replace("Endianness: ", "").lower()
+        print('[00000000] ', end='', file=self.f)
         self.write_line(f'Endianness: {self.endianness}')
 
         skip = 0
@@ -93,7 +100,7 @@ class Reader():
             skip = int(self.lines[0].lower().replace(' ', '')[4:])
 
         # open the binary reader
-        with open(file, 'rb') as f:
+        with open(path, 'rb') as f:
             data = f.read()
         self.r = bin_utils.BinReader(data, self.endianness)
         addr = data.find(script_name[::-1].encode())
@@ -101,6 +108,7 @@ class Reader():
             print(f'Could not find the script data in the file!')
             return False
         self.r.goto(addr - skip)
+        print('[00000000] ', end='', file=self.f)
         self.write_line(f'Start at 0x{addr - skip:X}')
 
         # skip to the block start
@@ -181,6 +189,7 @@ class Reader():
                 self.write_line(f'{name}: {arr_type} x {count}:')
                 d = self.depth + self.base_depth
                 for i in range(count):
+                    self.write_addr()
                     print("    " * d + f"  - item {i}:", file=self.f)
                     self.process_block(arr_type, d + 1)
             else:
@@ -215,7 +224,7 @@ class Reader():
 
     def process_block(self, name, depth):
         block: Block = self.blocks[name]
-        print(f'Processing block {name} (lines {block.start} - {block.end})')
+        # print(f'Processing block {name} (lines {block.start} - {block.end})')
 
         bd = self.base_depth
 
@@ -241,6 +250,7 @@ class Reader():
                         i = loop.start_line
                         loop.times_left -= 1
                         loop.iter += 1
+                        self.write_addr()
                         print(
                             f'{"    " * (loop.depth - 1 + self.base_depth) + "  "}- iter {loop.iter}:', file=self.f)
 
@@ -272,6 +282,7 @@ class Reader():
                         i = loop.start_line
                         loop.times_left -= 1
                         loop.iter += 1
+                        self.write_addr()
                         print(
                             f'{"    " * (loop.depth - 1 + self.base_depth) + "  "}- iter {loop.iter}:', file=self.f)
                         continue
@@ -283,8 +294,10 @@ class Reader():
                 expr = l.replace(' ', '')[3:-2]
                 expr_replaced, result = self.eval_expr(expr)
                 if self.depth >= len(conditional_results):
-                    conditional_results.extend([False] * (self.depth - len(conditional_results) + 1))
+                    conditional_results.extend(
+                        [False] * (self.depth - len(conditional_results) + 1))
                 conditional_results[self.depth] = result
+                self.write_addr()
                 self.write_line(
                     f'Condition "{expr}" => "{expr_replaced}" evaluates to {result}{":" if result else ""}')
                 if result:
@@ -293,15 +306,24 @@ class Reader():
                     max_depth = self.depth
             elif l.startswith("else"):
                 if not conditional_results[self.depth]:
+                    self.write_addr()
                     self.write_line("Else:")
                     max_depth = -1
                 else:
                     max_depth = self.depth
             elif l.startswith('elif'):
                 if not conditional_results[self.depth]:
-                    # expr = l.replace(' ', '')[4:-1]
-                    print("elif not handled i dont care")
-                    print("elif not handled i dont care", file=self.f)
+                    expr = l.replace(' ', '').replace('`', '')[4:-1]
+                    # print("elif not handled i dont care", expr)
+                    # print("elif not handled i dont care", file=self.f)
+                    expr2, result = self.eval_expr(expr)
+                    self.write_addr()
+                    self.write_line(
+                        f'Elif "{expr}" => "{expr2}" returned {result}{":" if result else ""}')
+                    if result:
+                        max_depth = -1
+                    else:
+                        max_depth = self.depth
                 else:
                     max_depth = self.depth
             elif l.endswith('times:'):
@@ -309,11 +331,16 @@ class Reader():
                 _, count = self.eval_expr(expr)
                 if count == 0:
                     max_depth = self.depth
+                    self.write_addr()
+                    self.write_line(
+                        f'Loop ("{expr}" => 0 iterations, ignoring)')
                 else:
                     loops.append(Loop(i + 1, self.depth + 1, count - 1, 0))
                     max_depth = -1
                     cur_loop += 1
-                    self.write_line(f'Loop ({count} iterations):')
+                    self.write_addr()
+                    self.write_line(f'Loop ("{expr}" => {count} iterations):')
+                    self.write_addr()
                     print(
                         f'{"    " * (self.depth + self.base_depth)  + "  "}- iter 0:', file=self.f)
             elif ' = ' in l:
@@ -321,6 +348,7 @@ class Reader():
                 val = int(val)
                 self.scope.set(name, self.depth + self.base_depth, val)
             else:
+                self.write_addr()
                 if l.endswith(':'):
                     self.write_line(l[1:-2] + ':')
                 else:
@@ -340,14 +368,14 @@ class Reader():
 
         # assuming the file starts with the header (# NAME, Endianness: ..., etc)
         if not self.process_header(file):
-            self.write_line("Failed to find the block in the file!")
+            print("[00000000] - Failed to find the block in the file!", file=self.f)
             self.f.close()
             return
 
         # read blocks
         self.read_blocks()
 
-        self.write_line('')
+        print('[00000000]', file=self.f)
 
         # start by processing the main block
         self.process_block('Main', 0)
@@ -356,18 +384,43 @@ class Reader():
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 3:
-        print("Usage: python reader.py <path to script> <files...>")
-        sys.exit(1)
+    # if len(sys.argv) < 3:
+    #     print("Usage: python reader.py <path to script> <files...>")
+    #     sys.exit(1)
 
-    script = Path(sys.argv[1])
-    files = sys.argv[2:]
+    # script = Path(sys.argv[1])
+    # files = sys.argv[2:]
 
-    print(f'Using script {script}')
+    # print(f'Using script {script}')
 
-    r = Reader(script)
+    # r = Reader(script)
 
-    for file in files:
-        out = f'{file}_{script.stem}.txt'
-        print(f'Processing {file} -> {out}')
-        r.process(file, out)
+    # for file in files:
+    #     out = f'{file}_{script.stem}.txt'
+    #     print(f'Processing {file} -> {out}')
+    #     r.process(file, out)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-s', '--scripts', nargs='+',
+                        help='Specify script .md file(s). Supports glob expressions.')
+    parser.add_argument('-i', '--input', nargs='+',
+                        help='Specify input file(s). Supports glob expressions.')
+    args = parser.parse_args()
+    print(args)
+
+    exclusions = ['MESH', 'TANB']  # scripts it cant read
+
+    # only use 4 letter named scripts to avoid confusion
+    scripts = [x for x in list(itertools.chain(
+        *[glob(x) for x in args.scripts])) if len(Path(x).stem) == 4 and not Path(x).stem in exclusions]
+    inputs = list(itertools.chain(*[glob(x) for x in args.input]))
+    print(scripts)
+    print(inputs)
+
+    for s in scripts:
+        print(f'Using script {s}')
+        r = Reader(s)
+        for i in inputs:
+            out = f'{i}_{Path(s).stem}.txt'
+            print(f'Processing {i} => {out}')
+            r.process(i, out)
