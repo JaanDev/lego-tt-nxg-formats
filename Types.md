@@ -8,7 +8,7 @@
 `u32` = `unsigned int`  
 `i32` = `int`
 
-`type[n]` = `type`, `n` times
+`type[n]` = `type`, `n` times  
 `str(n)` = `str` of length `n`
 
 `4CC` = `str(4)`. 4 character code. Used to indicate new blocks. It is also flipped if endianness is big

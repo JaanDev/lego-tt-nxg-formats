@@ -1,12 +1,8 @@
 # TXGH
 Endianness: big  
-Skip 4  
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
-maybe not done?
-
 ## Main
-* `unknown`: `u32` ; It was 1 in all files i've checked
 * `HGXT`: `4CC`
 * `version`: `u32` ; It is assumed to be `0xA`
 * `tids`: `TIDS` ; texture ids?

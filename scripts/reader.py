@@ -379,6 +379,8 @@ class Reader():
 
         # start by processing the main block
         self.process_block('Main', 0)
+        self.write_addr()
+        print("- Finished!", file=self.f)
 
         self.f.close()
 
