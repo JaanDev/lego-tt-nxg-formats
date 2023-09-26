@@ -1,5 +1,5 @@
 # GHG and GSC
-This is a file structure for .gsc and .ghg files  
+This is the file structure for .gsc and .ghg files  
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
 
 ## Main
@@ -34,7 +34,7 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
     * `vfxLocatorSet`:
         * `ROTV`: `4CC`
         * `size`: `u32`
-        * `data`: `VFXL[size]`
+        * `data`: `VFXL[size]` ; VFXL block (see [VFXL.md](VFXL.md))
 * if `fileVer >= 0x14`:
     * `instanceIxs`:
         * `ROTV`: `4CC`
@@ -42,16 +42,16 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
         * `data`: `u16[size]`
 * else
     * ; idk
-* `bnds`: `BNDS`
+* `bnds`: `BNDS` ; BNDS block (see [BNDS.md](BNDS.md))
 * `unk`: `u32`
-* `meshes`: `MESH`
+* `meshes`: `MESH` ; MESH block (see [MESH.md](MESH.md))
 * `unk`: `u32`
-* `materials`: `UMTL`
+* `materials`: `UMTL` ; UMTL block (see [UMTL.md](UMTL.md))
 * `unk`: `u32`
-* `lightmapData`: `LMDT`
+* `lightmapData`: `LMDT` ; LMDT block (see [LMDT.md](LMDT.md))
 * `unk`: `u32`
-* `cpus`: `CPUS`
-* `disp`: `DISP`
+* `cpus`: `CPUS` ; CPUS block (see [CPUS.md](CPUS.md))
+* `disp`: `DISP` ; DISP block (see [DISP.md](DISP.md))
 * if `fileVer < 0x38`:
     * ; idk
 * if `fileVer >= 0x14`:
@@ -70,25 +70,25 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
         * `data`: `u16[size]`
 * else
     * ; idk
-* `tanb`: `TANB`
+* `tanb`: `TANB` ; TANB block (see [TANB.md](TANB.md))
 * `playbackFPS`: `f32`
 * `unk`: `u32`
-* `ala3`: `ALA3`
-* `port`: `PORT`
+* `ala3`: `ALA3` ; ALA3 block (see [ALA3.md](ALA3.md))
+* `port`: `PORT` ; PORT block (see [PORT.md](PORT.md))
 * if `fileVer >= 0x10`:
     * `unk`: `u32`
-    * `pins`: `PINS`
-* `bscb`: `BSCB`
+    * `pins`: `PINS` ; PINS block (see [PINS.md](PINS.md))
+* `bscb`: `BSCB` ; BSCB block (see [BSCB.md](BSCB.md))
 * if `fileVer >= 0x33`:
-    * `occluders`: `OCCB`
-* `ivol`: `IVOL`
+    * `occluders`: `OCCB` ; OCCB block (see [OCCB.md](OCCB.md))
+* `ivol`: `IVOL` ; IVOL block (see [IVOL.md](IVOL.md))
 * if `fileVer >= 0xE`:
-    * `ivl5`: `IVL5`
+    * `ivl5`: `IVL5` ; IVL5 block (see [IVL5.md](IVL5.md))
 * if `fileVer >= 0x14`:
     * `charData`:
         * `ROTV`: `4CC`
         * `size`: `u32`
-        * `hgol`: `HGOL[size]`
+        * `hgol`: `HGOL[size]` ; HGOL block (see [HGOL.md](HGOL.md))
 * if `fileVer >= 0xB`:
     * `unk`: `u32`
     * if `unk != 0`: ; uhh i think it is supposed to work like that :P
@@ -96,12 +96,12 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 * if `fileVer >= 0x11`:
     * `looseTextures`: `u8`
 * if `fileVer >= 0xC`:
-    * `meta`: `META`
+    * `meta`: `META` ; META block (see [META.md](META.md))
 * if `fileVer >= 0x12`:
     * `unk`: `u32`
     * if `unk != 0`: ; uhh i think it is supposed to work like that :P
         * ; the following hasnt been checked
-        * ; looks like its a legacy deprecated MESH format
+        * ; looks like its a legacy deprecated MESH format  
         `legacyMesh`: `LEGACY_MESH`
 * if `fileVer >= 0x13`:
     * `useSingleLodAnim`: `u8`
