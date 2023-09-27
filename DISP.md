@@ -1,16 +1,17 @@
 # DISP
 Endianness: big  
 Reverse engineered by [JaanDev](https://github.com/JaanDev)
+With help from [Alub](https://github.com/AlubJ)
 
 ## Main
 * `DISP`: `4CC`
 * `ver`: `u32` ; it is assumed to be 15
 * `filePath`: `STR32`
-* `items`:
+* `displayCommands`:
     * `ROTV`: `4CC`
     * `size`: `u32`
     * `size` times:
-        * `type`: `u8`
+        * `command`: `u8` ; see DISPLAY COMMANDS
         * `id`: `u8`
         * `index`: `u32`
 * `clipObjects`:
@@ -109,3 +110,17 @@ Reverse engineered by [JaanDev](https://github.com/JaanDev)
 ## CLIP
 * `size`: `u32`
 * `data`: `f32[size]`
+
+## DISPLAY COMMANDS
+* `0x80`: `Material`
+* `0x82`: `GeoCall`
+* `0x83`: `Matrix`
+* `0x84`: `Terminate`
+* `0x85`: `MaterialClip`
+* `0x87`: `Dummy`
+* `0x8b`: `DynamicGeo`
+* `0x8e`: `End`
+* `0x8f`: `FaceOn`
+* `0xb0`: `LightMap`
+* `0xb3`: `Unknown`
+* `0xb5`: `Unknown`
