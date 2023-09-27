@@ -1,6 +1,6 @@
 # DISP
 Endianness: big  
-Reverse engineered by [JaanDev](https://github.com/JaanDev)
+Reverse engineered by [JaanDev](https://github.com/JaanDev)  
 With help from [Alub](https://github.com/AlubJ)
 
 ## Main
