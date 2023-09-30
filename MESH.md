@@ -1,7 +1,8 @@
 # MESH
 Endianness: big  
 Reverse engineered by [JaanDev](https://github.com/JaanDev)  
-Credits to the original author of [this](https://github.com/JamesFrancoe/TTGames-Extraction-Tools)
+Credits to the original author of [this](https://github.com/JamesFrancoe/TTGames-Extraction-Tools)  
+With help from [Alub](https://github.com/AlubJ)
 
 ## Main
 * `HSEM`: `4CC`
@@ -25,10 +26,10 @@ Credits to the original author of [this](https://github.com/JamesFrancoe/TTGames
         * `dynamicBufferCheck`: `u32`
         * if `dynamicBufferCheck > 0`:
             * `unk`: `u32`
-            * `poseCount = 0`
+            * `poseCount` = `0`
             * `test`: `u32`
             * while `test != 0`:
-               * `poseCount++`
+               * `poseCount` = `poseCount + 1`
                * `unk`: `u32`
                * `test`: `u32`
             * `len` poseCount:
@@ -62,13 +63,14 @@ Credits to the original author of [this](https://github.com/JamesFrancoe/TTGames
 
 ## VERTEX_SOMETHING
 * `unk`: `u32`
-* `flags`: `u32`
-* `count`: `u32`
-* `attribs`: `ATTRIBS`
-* Now the size in bytes of each vertex entry is calculated based on the `valVarType`s. The vertex size is equal to `sum([(4 * (type == 6) + 4) if (type > 4) else (4 * type) for type in valVarTypes])`
-* `count` times:
-    * for `val` in `attribs.valVarTypes`:
-        * `entry`: `(4 * (val == 6) + 4) if (val > 4) else (4 * val) bytes`
+* if `unk != 0`:
+    * `flags`: `u32`
+    * `count`: `u32`
+    * `attribs`: `ATTRIBS`
+    * Now the size in bytes of each vertex entry is calculated based on the `valVarType`s. The vertex size is equal to `sum([(4 * (type == 6) + 4) if (type > 4) else (4 * type) for type in valVarTypes])`
+    * `count` times:
+        * for `val` in `attribs.valVarTypes`:
+            * `entry`: `(4 * (val == 6) + 4) if (val > 4) else (4 * val) bytes`
 
 ## VERTEX ATTRIBUTES
 |Position|Attribute|
