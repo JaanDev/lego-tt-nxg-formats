@@ -10,9 +10,9 @@ With help from [Alub](https://github.com/AlubJ)
 * `ROTV`: `4CC`
 * `len`: `u32`
 * `len` times:
-    * `vbs`: `VBS`
-    * `fastBlendVBS`: `VBS`
-    * `unk`: `UNK`
+    * `vbs`: `VERTICES`
+    * `fastBlendVBS`: `VERTICES`
+    * `indexList`: `INDICES`
     * `ibOffset`: `u32`
     * `ibCount`: `u32`
     * `ibBase`: `u32`
@@ -43,23 +43,24 @@ With help from [Alub](https://github.com/AlubJ)
     * `unk`: `VERTEX_SOMETHING`
     * `byteOffset`: `u32`
     * `depthVbUsedCount`: `u32`
-    * `unk`: `UNK`
+    * `unk`: `INDICES`
     * `depthIbBase`: `u32`
     * `depthIbOffset`: `u32`
     * `depthIbBase`: `u32`
 
-## VBS
+## VERTICES
 * `size`: `u32`
 * `size` times:
     * `data`: `VERTEX_SOMETHING`
     * `byteOffset`: `u32`
 
-## UNK
+## INDICES
 * `unk`: `u32` ; Maybe size? But this is not used anyway
-* `flags`: `u32`
-* `count`: `u32`
-* `size`: `u32`
-* `data`: `size * count bytes`
+* if `unk != 0`:
+    * `flags`: `u32`
+    * `count`: `u32`
+    * `size`: `u32` ; size in bytes of 1 entry?
+    * `data`: `size * count bytes`
 
 ## VERTEX_SOMETHING
 * `unk`: `u32`
